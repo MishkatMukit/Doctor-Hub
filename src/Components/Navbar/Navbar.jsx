@@ -10,7 +10,7 @@ const Navbar = () => {
         <NavLink className={({ isActive }) => isActive ? 'border-b-3 font-semibold text-black' : ''} to='/contact'>Contact</NavLink>
     </>
     return (
-        <div className='mx-10'>
+        <div className='mx-10 py-3'>
             <div className="">
                 <div className='navbar max-w-[90%] mx-auto'>
                     <div className="navbar-start ">
@@ -39,7 +39,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="navbar-end">
-                        <button className='font-semibold bg-blue-600 text-white rounded-full py-2 px-3'>Emergency</button>
+                        <button className='btn btn-lg font-semibold bg-blue-600 text-white rounded-full  '>Emergency</button>
                     </div>
                 </div>
             </div>

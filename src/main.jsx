@@ -8,19 +8,22 @@ import Blogs from './Pages/Blogs/Blogs.jsx'
 import MainLayOut from './MainLayOut/MainLayOut.jsx';
 import Bookings from './Pages/Bookings/Bookings.jsx';
 import Contact from './Pages/Contact/Contact.jsx';
+import { Suspense } from 'react';
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayOut,
+    
     children:[
       {
         index:true,
         Component:Home,
+        
       },
       {
         path:"/blogs",
-        Component: Blogs
+        Component: Blogs,
       },
       {
         path:"/bookings",
@@ -34,5 +37,7 @@ const router = createBrowserRouter([
   }
 ])
 createRoot(document.getElementById('root')).render(
-    <RouterProvider router={router}/>
+    <Suspense fallback = {<span className="loading loading-bars loading-xl"></span>} >
+      <RouterProvider router={router}/>
+    </Suspense>
 )
