@@ -22,7 +22,7 @@ const DoctorDetails = () => {
 
             <DoctorInfo doctor={doctor}></DoctorInfo>
 
-            <BookAppointment> </BookAppointment>
+            <BookAppointment doctor={doctor}> </BookAppointment>
         </div>
     );
 };

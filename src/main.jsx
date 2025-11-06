@@ -10,41 +10,47 @@ import Bookings from './Pages/Bookings/Bookings.jsx';
 import Contact from './Pages/Contact/Contact.jsx';
 import { Suspense } from 'react';
 import Details from './Pages/DoctorDetails/DoctorDetails.jsx';
+import { ToastContainer, toast } from 'react-toastify';
+import { AppointmentProvider } from './Context/AppointmentContext.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayOut,
-    
-    children:[
+
+    children: [
       {
-        index:true,
-        path:"/",
-        Component:Home,
-        
+        index: true,
+        path: "/",
+        Component: Home,
+
       },
       {
-        path:"/blogs",
+        path: "/blogs",
         Component: Blogs,
       },
       {
-        path:"/bookings",
+        path: "/bookings",
         Component: Bookings
       },
       {
-        path:"/contact",
+        path: "/contact",
         Component: Contact
       },
       {
         path: "/details/:id",
-        loader: ()=>fetch("/public/doctors.json"),
-        Component:Details
+        loader: () => fetch("/doctors.json"),
+        Component: Details
       }
     ]
   }
 ])
 createRoot(document.getElementById('root')).render(
-    <Suspense fallback = {<span className="loading loading-bars loading-xl"></span>} >
-      <RouterProvider router={router}/>
-    </Suspense>
+  <Suspense fallback={<span className="loading loading-bars loading-xl"></span>} >
+    <AppointmentProvider>
+      <ToastContainer className='text-left' />
+      <RouterProvider router={router} />
+    </AppointmentProvider>
+
+  </Suspense>
 )

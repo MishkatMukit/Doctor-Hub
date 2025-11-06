@@ -1,17 +1,31 @@
 import React, { useState } from 'react';
 import { BiMessageSquareError } from "react-icons/bi";
+import { Link, useNavigate } from 'react-router';
 import { ToastContainer, toast } from 'react-toastify';
-const BookAppointment = () => {
+import { useAppointments } from '../../Context/AppointmentContext';
+const BookAppointment = ({ doctor }) => {
 
-    const [appointed, setAppointed] =useState(false)
-    const notify = (appointed) => {
-        if(!appointed){
-            toast("Appointment Scheduled")
+
+    const { bookAppointment, isBooked, bookedDoctors } = useAppointments()
+
+    const alreadyBooked = isBooked(doctor)
+    console.log(bookedDoctors)
+    console.log("booked ? ", alreadyBooked)
+    const navigate = useNavigate()
+    const notify = () => {
+        if (!alreadyBooked) {
+            bookAppointment(doctor)  
+            toast.success(`Appointment Scheduled for  ${doctor.name} successfully!`)
+            setTimeout(() => {
+                navigate("/bookings")
+            }, 800)
+
         }
-        else{
-            toast("Appointment cancelled")
+        else {
+            toast.warn("already appointed")
         }
-        
+
+
     };
 
     return (
@@ -31,10 +45,8 @@ const BookAppointment = () => {
                         </span>
 
                     </div>
-                    <button onClick={()=>{setAppointed(!appointed), notify(appointed)}} className='btn btn-lg bg-primaary text-lg font-bold text-white rounded-full my-4'>{
-                            appointed? <span>Cancel Appointment</span> : <span >Book Appointment Now</span>
-                        }</button>
-                    <ToastContainer />
+                    <button onClick={() => notify()} className='btn btn-lg bg-primaary text-lg font-bold text-white rounded-full my-4'>{alreadyBooked ? 'Already Booked' : 'Book Appointment Now'}</button>
+
 
                 </div>
             </div>
