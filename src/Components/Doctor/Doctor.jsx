@@ -1,5 +1,6 @@
 import React from 'react';
 import { AiOutlineTrademark } from "react-icons/ai";
+import { Link } from 'react-router';
 
 const Doctor = ({ doctor }) => {
     return (
@@ -35,9 +36,11 @@ const Doctor = ({ doctor }) => {
                         <span className="text-gray-700">Reg No: {doctor.registration_number}</span>
                     </div>
 
-                    <button onClick className="w-full py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-full hover:bg-blue-50 transition-colors">
+                    <Link to={`/details/${doctor.id}`}>
+                        <button className="w-full py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-full hover:bg-blue-50 transition-colors">
                         View Details
                     </button>
+                    </Link>
                 </div>
             </div>
 
