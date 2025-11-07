@@ -5,12 +5,14 @@ import Rechart from '../../Components/Rechart/Rechart';
 
 const Bookings = () => {
     const {bookedDoctors} = useAppointments()
-    console.log("from bookings", bookedDoctors)
+    // console.log("from bookings", bookedDoctors)
 
     return (
         <div>
             <div>
-                <Rechart bookedDoctors={bookedDoctors}></Rechart>
+                {
+                    bookedDoctors.length && <Rechart bookedDoctors={bookedDoctors}></Rechart>
+                }
             </div>
             <div className='space-y-3 text-center md:p-16  my-5'>
                 <h1 className='font-extrabold text-4xl md:text-5xl max-w-[900px] mx-auto text-black'>My Today Appointments</h1>

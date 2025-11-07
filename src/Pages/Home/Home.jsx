@@ -6,11 +6,11 @@ import Services from '../../Components/Services/Services';
 
 const Home = () => {
     const doctors = useLoaderData()
-    console.log(doctors)
+    // console.log("from home",data)
     return (
         <div>
             <Banner></Banner>
-            <Doctors></Doctors>
+            <Doctors doctors={doctors}></Doctors>
             <Services></Services>
         </div>
     );

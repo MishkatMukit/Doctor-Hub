@@ -8,20 +8,20 @@ const BookAppointment = ({ doctor }) => {
     const { bookAppointment, isBooked, bookedDoctors } = useAppointments()
 
     const alreadyBooked = isBooked(doctor)
-    console.log(bookedDoctors)
-    console.log("booked ? ", alreadyBooked)
+    // console.log(bookedDoctors)
+    // console.log("booked ? ", alreadyBooked)
     const navigate = useNavigate()
     const notify = () => {
         if (!alreadyBooked) {
             bookAppointment(doctor)  
-            toast.success(`Appointment Scheduled for  ${doctor.name} successfully!`)
+            toast.success(`Appointment Scheduled with ${doctor.name} successfully!`)
             setTimeout(() => {
                 navigate("/bookings")
             }, 800)
 
         }
         else {
-            toast.warn("already appointed")
+            toast.warn(`You already have an Appointment with ${doctor.name} today!`)
         }
 
 

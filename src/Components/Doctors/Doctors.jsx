@@ -1,20 +1,26 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import Doctor from '../Doctor/Doctor';
 
-const Doctors = () => {
-    const [doctors, setDoctors] = useState([])
-    const [showAll, setShowAll] = useState(false)
-    useEffect(()=>{
-        <Suspense fallback={<span className="loading loading-bars loading-xl"></span>}>
-            {
-            fetch('doctors.json').then(res=>res.json()).then(data=>setDoctors(data))
-            }
 
-        </Suspense>
-    },[])
+const Doctors = ({doctors}) => {
+    // const [doctors, setDoctors] = useState([])
+    const [showAll, setShowAll] = useState(false)
+    // useEffect(()=>{
+    //     <Suspense fallback={<span className="loading loading-bars loading-xl"></span>}>
+    //         {
+    //         fetch('doctors.json').then(res=>res.json()).then(data=>setDoctors(data))
+    //         }
+
+    //     </Suspense>
+    // },[])
+    // useEffect(()=>{
+    //     setDoctors(data)
+    // },[data]);
+    // console.log("from doctors",data)
+    
     const half = Math.ceil(doctors.length/2)
     const displayDoctors = showAll? doctors : doctors.slice(0, half)
-    console.log(doctors)
+    // console.log(doctors)
     return (
         <div className='py-16'>
             <div className='space-y-3 text-center pb-5'>
@@ -25,13 +31,13 @@ const Doctors = () => {
                 {
                     displayDoctors.map(doctor=>(
                         
-                        <Doctor doctor={doctor}></Doctor>
+                        <Doctor key={doctor.id} doctor={doctor}></Doctor>
 
                     ))
                 }
             </div>
             <div className='flex justify-center py-5'>
-                <button onClick={()=>setShowAll(!showAll)} className=' btn text-lg btn-lg bg-primaary text-white font-bold rounded-full'>{showAll?<span>Show Less</span>: <span>Show All</span>}</button>
+                <button onClick={()=>setShowAll(!showAll)}  className=' btn text-lg btn-lg bg-primaary text-white font-bold rounded-full'>{showAll?<span>Show Less</span>: <span>Show All</span>}</button>
             </div>
 
         </div>

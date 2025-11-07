@@ -1,10 +1,12 @@
 import React from 'react';
 import { useAppointments } from '../../Context/AppointmentContext';
+import { toast } from 'react-toastify';
 
 const BookedDoctor = ({doctor}) => {
-    console.log("from bookedDoctor " , doctor)
+    // console.log("from bookedDoctor " , doctor)
     const {bookedDoctors, setBookedDoctors} = useAppointments()
     const handleCancelAppointment=()=>{
+        toast.error(`Your Appointment with ${doctor.name} is cancelled!`)
         const remBookedDoctors = bookedDoctors.filter(d => d.id !==doctor.id)
         setBookedDoctors(remBookedDoctors)
     }

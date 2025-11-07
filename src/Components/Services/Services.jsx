@@ -12,10 +12,10 @@ const Services = () => {
                 <p className='text-black1 max-w-[1000px] mx-auto'>Our platform connects you with verified, experienced doctors across various specialties — all at your convenience. </p>
 
             </div>
-            <div className='flex gap-10 justify-center'>
+            <div className='flex items-center flex-col md:flex-row gap-10 justify-center'>
                 {
                     services.map(service=>(
-                        <Service service={service}></Service>
+                        <Service key={service.id} service={service}></Service>
                     ))
                 }
             </div>
