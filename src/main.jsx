@@ -10,9 +10,11 @@ import Bookings from './Pages/Bookings/Bookings.jsx';
 import Contact from './Pages/Contact/Contact.jsx';
 import { Suspense } from 'react';
 import Details from './Pages/DoctorDetails/DoctorDetails.jsx';
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import { AppointmentProvider } from './Context/AppointmentContext.jsx';
 import Error from './Pages/Error/Error.jsx';
+import { HelmetProvider } from 'react-helmet-async';
+
 
 const router = createBrowserRouter([
   {
@@ -75,10 +77,11 @@ const router = createBrowserRouter([
 ])
 createRoot(document.getElementById('root')).render(
   <Suspense fallback={<span className="loading loading-bars loading-xl"></span>} >
-    <AppointmentProvider>
-      <ToastContainer className='text-left' />
-      <RouterProvider router={router} />
-    </AppointmentProvider>
-
+    <HelmetProvider>
+      <AppointmentProvider>
+        <ToastContainer className='text-left' />
+        <RouterProvider router={router} />
+      </AppointmentProvider>
+    </HelmetProvider>
   </Suspense>
 )

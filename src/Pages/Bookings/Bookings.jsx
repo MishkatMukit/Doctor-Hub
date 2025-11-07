@@ -2,6 +2,7 @@ import React from 'react';
 import { useAppointments } from '../../Context/AppointmentContext';
 import BookedDoctor from '../../Components/BookedDoctor/BookedDoctor';
 import Rechart from '../../Components/Rechart/Rechart';
+import { Helmet } from 'react-helmet';
 
 const Bookings = () => {
     const {bookedDoctors} = useAppointments()
@@ -9,6 +10,9 @@ const Bookings = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>DoctorHub | Bookings</title>
+            </Helmet>
             <div>
                 {
                     bookedDoctors.length && <Rechart bookedDoctors={bookedDoctors}></Rechart>

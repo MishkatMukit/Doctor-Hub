@@ -2,6 +2,7 @@ import React from 'react';
 import { useLoaderData, useParams } from 'react-router';
 import DoctorInfo from '../../Components/DoctorInfo/DoctorInfo';
 import BookAppointment from '../../Components/BookAppointment/BookAppointment';
+import { Helmet } from 'react-helmet';
 
 const DoctorDetails = () => {
     const { id } = useParams()
@@ -12,6 +13,9 @@ const DoctorDetails = () => {
     return (
 
         <div >
+            <Helmet>
+                <title>Details | {doctor.name}</title>
+            </Helmet>
             <div>
                 <div className='space-y-3 text-center p-16 bg-white my-5 rounded-xl shadow-sm'>
                     <h1 className='font-extrabold text-5xl max-w-[900px] mx-auto text-black'>Doctor’s Profile Details</h1>
