@@ -12,6 +12,7 @@ import { Suspense } from 'react';
 import Details from './Pages/DoctorDetails/DoctorDetails.jsx';
 import { ToastContainer, toast } from 'react-toastify';
 import { AppointmentProvider } from './Context/AppointmentContext.jsx';
+import Error from './Pages/Error/Error.jsx';
 
 const router = createBrowserRouter([
   {
@@ -42,8 +43,13 @@ const router = createBrowserRouter([
         loader: () => fetch("/doctors.json"),
         Component: Details
       }
+      
     ]
-  }
+  },
+  {
+        path:'*',
+        Component:Error
+      }
 ])
 createRoot(document.getElementById('root')).render(
   <Suspense fallback={<span className="loading loading-bars loading-xl"></span>} >

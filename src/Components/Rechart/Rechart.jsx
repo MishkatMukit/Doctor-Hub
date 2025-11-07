@@ -47,7 +47,7 @@ const Rechart = ({ bookedDoctors }) => {
             tick={{ fontSize: 12 }}
           />
           <YAxis />
-          <Tooltip />
+          <Tooltip className="hidden md:flex" />
           <Bar dataKey="fees" fill="#6366f1" shape={<TriangleBar />}>
             <LabelList dataKey="fees" position="top" />
           </Bar>

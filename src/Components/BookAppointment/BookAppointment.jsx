@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { BiMessageSquareError } from "react-icons/bi";
 import { Link, useNavigate } from 'react-router';
 import { ToastContainer, toast } from 'react-toastify';

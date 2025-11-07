@@ -10,12 +10,10 @@ const Bookings = () => {
     return (
         <div>
             <div>
-                <h1>Rechart section</h1>
                 <Rechart bookedDoctors={bookedDoctors}></Rechart>
-
             </div>
-            <div className='space-y-3 text-center p-16  my-5'>
-                <h1 className='font-extrabold text-5xl max-w-[900px] mx-auto text-black'>My Today Appointments</h1>
+            <div className='space-y-3 text-center md:p-16  my-5'>
+                <h1 className='font-extrabold text-4xl md:text-5xl max-w-[900px] mx-auto text-black'>My Today Appointments</h1>
                 <p className='text-black1 max-w-[1000px] mx-auto'>Our platform connects you with verified, experienced doctors across various specialties — all at your convenience.</p>
 
             </div>
